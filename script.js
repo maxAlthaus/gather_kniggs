@@ -7,6 +7,7 @@ const logo = document.querySelector('#logo');
 const typewr = document.querySelector('.typewriter');
 const c_container = document.querySelector('.container');
 const c_input = document.querySelector('.code-input');
+const c_room = document.querySelector('#room');
 const c_btn = document.querySelector('.code-btn');
 // Trainingsinput-Sektion
 const infobox = document.querySelector('.infobox');
@@ -37,14 +38,33 @@ let btn2 = document.querySelector('#btn2');
 let btn3 = document.querySelector('#btn3');
 let btn4 = document.querySelector('#btn4');
 
+let arr_rooms = [102, 105, 2, 7, 110, 205, 15, 113, 201, 9, 301, 107, 111, 302];
 let arr_puzzle_dec = ['Es gibt', 'keine', 'zweite', 'Chance', 'für einen', 'ersten', 'Eindruck'];
 let arr_puzz_enc = [];
 let arr_master = ['Walter', 'Claudia', 'PiaYvonne', 'Franziska', 'HeikeS', 'Monika', 'AnnaLena', 'LenaKuehnlein', 'Marlene', 'Phillipp', 'Maximilian', 'BalthasarMax', 'Watzlawick', 'SimonSinek'];
 let arr_enc = [];
 let arr_steps = [document.querySelector('#stage1'), document.querySelector('#stage2'), document.querySelector('#stage3'), document.querySelector('#stage4'), document.querySelector('#stage5'), document.querySelector('#stage6'), document.querySelector('#stage7')];
-let arr_imgs = ['./img/kleidung.png', './img/aufmerksamkeit.png', './img/begruessung.png', './img/smalltalk.png', './img/setzen.png', './img/unguenstigesit.png', './img/essen.png'];
-let arr_icons = ['./img/kleidung_icon.png', './img/aufmerksam_icon.png', './img/greeting_icon.png', './img/setzen_icon.png', './img/small_talk_icon.png', './img/unguenstig_icon.png', './img/essen_icon.png',];
-let arr_kniggs = ['./img/kniggs1_icon.png', './img/kniggs2_icon.png', './img/kniggs3_icon.png', './img/kniggs4_icon.png'];
+let arr_imgs = ['./img/kleidung.png', 
+        './img/aufmerksamkeit.png', 
+        './img/begruessung.png', 
+        './img/smalltalk.png', 
+        './img/setzen.png', 
+        './img/unguenstigesit.png', 
+        './img/essen.png'];
+
+let arr_icons = ['./img/kleidung_icon.png', 
+        './img/aufmerksam_icon.png', 
+        './img/greeting_icon.png', 
+        './img/setzen_icon.png', 
+        './img/small_talk_icon.png', 
+        './img/unguenstig_icon.png', 
+        './img/essen_icon.png',];
+
+let arr_kniggs = ['./img/kniggs1_icon.png', 
+        './img/kniggs2_icon.png', 
+        './img/kniggs3_icon.png', 
+        './img/kniggs4_icon.png'];
+
 let arr_alerts = ['Das ist nicht förderlich für Dein Business. Hast Du auch noch eine andere Lösung?',
 'Kann man machen...und dann das Geschäft versemmeln. Noch einmal bitte.',
 'Sehr ungünstige Lösung. Versuche es noch einmal.',
@@ -115,7 +135,7 @@ let arr_answers = [
         },
         {
             antwort: 'Multitasking, Baby! Wer Mails später als sofort beantwortet, verliert Geld und… oh, sorry, mein Phone. Ich geh mal ran, ja?',
-            res: true
+            res: false
         }
     ],
     [
@@ -269,7 +289,7 @@ for(let i = 0; i < arr_puzzle_dec.length; i++){
 c_btn.addEventListener('click', () => {
     codewort = c_input.value;
     for( let i = 0; i < arr_enc.length; i++){
-        if (c_input.value == arr_enc[i]){
+        if (c_input.value == arr_enc[i] && c_room.value == arr_rooms[i]){
             if(i % 2 == 0){
                 c_btn.style.backgroundColor = "green";
                 setTimeout(function(){
@@ -303,7 +323,7 @@ c_input.addEventListener('keydown', (e) => {
     codewort = c_input.value;
     if(e.key === 'Enter') {
         for( let i = 0; i < arr_enc.length; i++){
-            if (c_input.value == arr_enc[i]){
+            if (c_input.value == arr_enc[i] && c_room.value == arr_rooms[i]){
                 if(i % 2 == 0){
                     c_btn.style.backgroundColor = "green";
                     setTimeout(function(){
@@ -334,90 +354,79 @@ c_input.addEventListener('keydown', (e) => {
     return codewort;
 });
 
-
 // ***************************************************  Ergebnis - Sektion mit Inhalt füllen, orientiert an den Stages der jeweiligen Gruppe ********************************
 let new_information_code_puzzle = [
     {
-        text : `Sicherheitstest bestanden. Das Puzzlestück lautet:    ${arr_puzz_enc[0]}   . Der Code für Stufe 2 lautet:`,
-        newC : arr_enc[2],
+        text : `Neues Puzzlestück:    ${arr_puzz_enc[0]}`,
+        newC : `Der Code für Stufe 2 lautet: ${arr_enc[2]}`,
         hinweis : `Hinweis j.c-Agency:.....Für alle weiteren Aktivitäten benötigt Ihr Business-Outfit. Also zieht Euren Avatar entsprechend um. 
         Dann stellt Euch als Gruppe im EG zusammen und macht einen Screenshot. Bewahrt diesen auf. Zu gegebener Zeit bekommt Ihr den Hinweis, wohin der Screen shot gesendet werden muss.
         Nach dem Fotoshooting geht zum nächsten Terminal. Es steht im EG, Raum 02.`
     },
     {
-        text : `Sicherheitstest bestanden. Das Puzzlestück lautet:    ${arr_puzz_enc[6]}   . Der Code für Stufe 2 lautet:`,
-        newC : arr_enc[3],
+        text : `Neues Puzzlestück:    ${arr_puzz_enc[6]}`,
+        newC : `Der Code für Stufe 2 lautet: ${arr_enc[3]}`,
         hinweis : `Hinweis j.c-Agency:.....Für alle weiteren Aktivitäten benötigt Ihr Business-Outfit. Also zieht Euren Avatar entsprechend um. 
         Dann stellt Euch als Gruppe im EG zusammen und macht einen Screenshot. Bewahrt diesen auf. Zu gegebener Zeit bekommt Ihr den Hinweis, wohin der Screen shot gesendet werden muss.
         Nach dem Fotoshooting geht zum nächsten Terminal.Es steht im EG, Raum 07.`
     },
     {
-        text : `Sicherheitstest bestanden. Das Puzzlestück lautet:    ${arr_puzz_enc[1]}   . Der Code für Stufe 3 lautet:`,
-        newC : arr_enc[4],
+        text : `Neues Puzzlestück:    ${arr_puzz_enc[1]}`,
+        newC : `Der Code für Stufe 3 lautet:${arr_enc[4]}`,
         hinweis : 'Hinweis j.c-Agency:.....Das nächste Terminal ist für Euch offen. Es steht im 1.OG, der orangene Tisch.'
     },
     {
-        text : `Sicherheitstest bestanden. Das Puzzlestück lautet:    ${arr_puzz_enc[5]}   . Der Code für Stufe 3 lautet:`,
-        newC : arr_enc[5],
-        hinweis : 'Hinweis j.c-Agency:.....Das nächste Terminal ist für Euch offen. Es steht im 2.OG, offener Arbeitsbereich, Tischgruppe 1.'
+        text : `Neues Puzzlestück:    ${arr_puzz_enc[5]}`,
+        newC : `Der Code für Stufe 3 lautet: ${arr_enc[5]}`,
+        hinweis : 'Hinweis j.c-Agency:.....Das nächste Terminal ist für Euch offen. Es steht im 2.OG, offener Arbeitsbereich, Tisch 205.'
     },
     {
-        text : `Sicherheitstest bestanden. Das Puzzlestück lautet:    ${arr_puzz_enc[2]}   . Der Code für Stufe 4 lautet:`,
-        newC : arr_enc[6],
+        text : `Neues Puzzlestück:    ${arr_puzz_enc[2]}`,
+        newC : `Der Code für Stufe 4 lautet: ${arr_enc[6]}`,
         hinweis : 'Hinweis j.c-Agency:.....Unsere Hacker haben Euch ein weiteres Zeitfenster an einem Terminal organisiert. Ihr findet das Terminal im EG, Raum 015.'
     },
     {
-        text : `Sicherheitstest bestanden. Das Puzzlestück lautet:    ${arr_puzz_enc[4]}   . Der Code für Stufe 4 lautet:`,
-        newC : arr_enc[7],
+        text : `Neues Puzzlestück:    ${arr_puzz_enc[4]}`,
+        newC : `Der Code für Stufe 4 lautet: ${arr_enc[7]}`,
         hinweis : 'Hinweis j.c-Agency:.....Unsere Hacker haben Euch ein weiteres Zeitfenster an einem Terminal organisiert. Ihr findet das Terminal im 1.OG, blauer Tisch.'
     },
     {
-        text : `Sicherheitstest bestanden. Das Puzzlestück lautet:    ${arr_puzz_enc[3]}   . Den Code für Stufe 5 und den Schlüssel`,
-        newC : 'hat die andere Gruppe.',
-        hinweis : `Hinweis j.c-Agency:.....Auf der Seite "Startcodes" findet Ihr einen zweiten Code und eine Zahl. 
-        Die Zahl ist der De-chiffrier-Schlüssel. Nur eine Person pro Gruppe trifft sich mit 
-        der Person der anderen Gruppe im Erdgeschoss in einem "privaten" Bereich.
-        Tauscht Dort sowohl Code, als auch Schlüssel aus. Anschließend geht zur Verschlüsselungsmaschine im vierten Obergeschoss.
-        Gebt den Code ein und den Schlüssel, den Ihr von der anderen Gruppe erhalten habt.
-        Das entschlüsselte Wort muss aber mit dem Schlüssel auf Eurer Seite "Startcodes" wieder verschlüsselt werden.
-        Nur so könnt Ihr im nächsten Terminal weiter kommen......Ach ja, das neue Terminal steht übrigens im 2.OG, Raum 201.`
+        text : `Neues Puzzlestück:    ${arr_puzz_enc[3]}`,
+        newC : ' Den Code für Stufe 5 und den Schlüssel hat die andere Gruppe.',
+        hinweis : `Hinweis j.c-Agency:.....Im 3.OG findet Ihr eine Anleitung zum Austausch des Codes auf einem Whiteboard. 
+        Nur eine Person pro Gruppe trifft sich mit der Person der anderen Gruppe zum Austsausch im Erdgeschoss in einem "privaten" Bereich.
+        Ach ja, das neue Terminal steht übrigens im 2.OG, Raum 201.`
     },
     {
-        text : `Sicherheitstest bestanden. Das Puzzlestück lautet:    ${arr_puzz_enc[3]}   . Den Code für Stufe 5 und den Schlüssel`,
+        text : `Neues Puzzlestück:    ${arr_puzz_enc[3]}`,
         newC : 'hat die andere Gruppe.',
-        hinweis : `Hinweis j.c-Agency:.....Auf der Seite "Startcodes" findet Ihr einen zweiten Code und eine Zahl. 
-        Die Zahl ist der De-chiffrier-Schlüssel. Nur eine Person pro Gruppe trifft sich mit 
-        der Person der anderen Gruppe im Erdgeschoss in einem "privaten" Bereich.
-        Tauscht Dort sowohl Code, als auch Schlüssel aus. Anschließend geht zur Verschlüsselungsmaschine im vierten Obergeschoss.
-        Gebt den Code ein und den Schlüssel, den Ihr von der anderen Gruppe erhalten habt.
-        Das entschlüsselte Wort muss aber mit dem Schlüssel auf Eurer Seite "Startcodes" wieder verschlüsselt werden.
-        Nur so könnt Ihr im nächsten Terminal weiter kommen......Ach ja, das neue Terminal steht übrigens im EG, Raum 09.`
+        hinweis : `Hinweis j.c-Agency:.....Im 3.OG findet Ihr eine Anleitung zum Austausch des Codes auf einem Whiteboard. 
+        Nur eine Person pro Gruppe trifft sich mit der Person der anderen Gruppe zum Austsausch im Erdgeschoss in einem "privaten" Bereich.
+        Ach ja, das neue Terminal steht übrigens im EG, Raum 09.`
     },
     {
-        text : `Sicherheitstest bestanden. Das Puzzlestück lautet:    ${arr_puzz_enc[4]}   . Der Code für Stufe 6 lautet:`,
-        newC : arr_enc[10],
+        text : `Neues Puzzlestück:    ${arr_puzz_enc[4]}`,
+        newC : `Der Code für Stufe 6 lautet: ${arr_enc[10]}`,
         hinweis : 'Hinweis j.c-Agency:.....Verflixt! Unsere Hacking-Aktion ist aufgeflogen. Wir mussten zwei Teams einsetzen um die Cyber-Security anzulenken. Das hat geklappt und das neue Terminal steht 3.OG in der linken unteren Ecke. '
     },
     {
-        text : `Sicherheitstest bestanden. Das Puzzlestück lautet:    ${arr_puzz_enc[2]}   . Der Code für Stufe 6 lautet:`,
-        newC : arr_enc[11],
+        text : `Neues Puzzlestück:    ${arr_puzz_enc[2]}`,
+        newC : `Der Code für Stufe 6 lautet: ${arr_enc[11]}`,
         hinweis : 'Hinweis j.c-Agency:.....Verflixt! Unsere Hacking-Aktion ist aufgeflogen. Wir mussten zwei Teams einsetzen um die Cyber-Security anzulenken. Das hat geklappt und das neue Terminal steht im 1.OG, schwarzer Tisch. '
     },
     {
-        text : `Sicherheitstest bestanden. Das Puzzlestück lautet:    ${arr_puzz_enc[5]}   . Der Code für Stufe 7 lautet:`,
-        newC : arr_enc[12],
+        text : `Neues Puzzlestück:    ${arr_puzz_enc[5]}`,
+        newC : `Der Code für Stufe 7 lautet: ${arr_enc[12]}`,
         hinweis : 'Hinweis j.c-Agency:.....Das war jetzt nicht einfach. Die Cyber-Security war fast kaum noch zu umgehen. Dennoch haben wir ein Terminal knacken können. Geht zum grünen Tisch im 1.OG. '
     },
     {
-        text : `Sicherheitstest bestanden. Das Puzzlestück lautet:    ${arr_puzz_enc[1]}   . Der Code für Stufe 7 lautet:`,
-        newC : arr_enc[13],
+        text : `Neues Puzzlestück:    ${arr_puzz_enc[1]}`,
+        newC : `Der Code für Stufe 7 lautet: ${arr_enc[13]}`,
         hinweis : 'Hinweis j.c-Agency:.....Das war jetzt nicht einfach. Die Cyber-Security war fast kaum noch zu umgehen. Dennoch haben wir ein Terminal knacken können. Geht zum Tisch in der rechten unteren Ecke im 3.OG.'
     },
     {
         text : `Gratuliere. Ich gebe Euch das letzte Puzzlestück:    ${arr_puzz_enc[6]}   . Ihr habt Euch mein Vertrauen erworben. Naja fast!`,
-        newC : `Entschlüsselt noch alle Puzzelstücke. Die vollständig entschlüsselte Lösung 
-        schickt Ihr als Screenshot zusammen mit dem Gruppen-Screenshot in Business-Outfit an Eure:n Trainer:in Modul 1 per Webex-Nachricht. 
-        Dann verrate ich all meine Geheimnisse in diesem Modul.`,
+        newC : `Entschlüsselt noch alle Puzzelstücke. Die vollständig entschlüsselte Lösung schickt Ihr als Screenshot zusammen mit dem Gruppen-Screenshot in Business-Outfit an Eure:n Trainer:in Modul 1 per Webex-Nachricht. Dann verrate ich all meine Geheimnisse in diesem Modul.`,
         hinweis : `Hinweis j.c-Agency:.....Jetzt haben wir den Kerl an der Angel. Zum Entschlüsseln lauft wieder zur Verschlüsselungsmaschine. 
         Unsere Hacker konnten die möglichen Schlüssel eingrenzen. Es sind auf jeden Fall nicht die beiden
         Schlüssel, die Ihr schon kennt. Darüber hinaus halten die Hacker es für sehr wahrscheinlich, dass
@@ -452,7 +461,7 @@ for (let i = 0; i < arr_master.length; i++){
     } else {
         arr_enc.push(caesar_cipher(arr_master[i], 15));
         if(i == 6 || i == 7){
-            new_information_code_puzzle[i].newC = 'hat die andere Gruppe.';
+            new_information_code_puzzle[i].newC = 'Den Code für die nächste Stufe hat die andere Gruppe.';
         } else if(i == 12 || i == 13){
             new_information_code_puzzle[i].newC = `Entschlüsselt noch alle Puzzelstücke. Die vollständig entschlüsselte Lösung 
             schickt Ihr als Screenshot an Eure:n Trainer:in Modul 1 per Webex-Nachricht.
@@ -469,14 +478,13 @@ let newCode = () => {
     wrapper1.classList.toggle('hide');
     wrapper2.classList.toggle('hide');
     result.innerHTML = `${new_information_code_puzzle[ind].text}`;
-    result_code.innerHTML = `${new_information_code_puzzle[ind].newC}`;
+    result_code.innerHTML = `Neuer Code: ${new_information_code_puzzle[ind].newC}`;
     jc_hint.innerHTML = `${new_information_code_puzzle[ind].hinweis}`;
     if((ind == 12 || ind == 13) && wrapper2.className != 'hide'){
         bild_ende.classList.toggle('hide');
         slider.classList.toggle('hide');
     }
 }
-
 
 
 // ********************************************************************************** Quiz aktivieren und Durchführen *********************************************************
@@ -516,8 +524,6 @@ let start_quiz = (number_question) => {
     });
 }
 
-
-
 // ********************************************************************************   Infobox zeigen mit dem Trainingsinput je nach Stage   ***********************************
 let show_infobox = (ammount) => {
     let image = document.createElement('img');
@@ -532,8 +538,6 @@ let show_infobox = (ammount) => {
     };
     weiter_btn.addEventListener('click', () => start_quiz(ammount));
 }
-console.log(arr_enc);
-console.log(arr_puzz_enc);
 
 // ********************************************************************************  Logg Out **********************************************************************************
 

@@ -9,13 +9,14 @@
 </head>
 <body>
     <div id="jc-logo">
-        <img id="logo" class="logoEntry" src="./img/juniorchallenger_Bildlogo_upDATE.png" alt="Logo junior challenger">
-        <h4 class="typewriter">junior.challenger agents interface - Zutritt nur mit Zugangscode.</h4>
+        <img id="logo" src="./img/juniorchallenger_Bildlogo_upDATE.png" alt="Logo junior challenger">
+        <h4 class="typewriter">junior.challenger agents interface</h4>
     </div>
     <div class="container">
-        <h3>Bitte gib den Zugangscode ein</h3>
+        <h3>Zugangscode und Bereichsnummer bitte</h3>
         <div class="input-container">
-            <input class="code-input" name="code-input" type="password" size="20" minlength="3" required>
+            <input class="code-input" name="code-input" type="password" size="20" minlength="3" placeholder = "Zugangscode" required>
+            <input class="code-input" id="room" type="text" size="20" minlength="3" placeholder = "Nummer von Raum/Tisch" required>
             <input name="code-btn" class="code-btn" type="button" value="Enter">
         </div>
     </div>
