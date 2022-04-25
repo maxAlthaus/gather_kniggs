@@ -45,7 +45,7 @@
     background-image: url(./img/HiGruBKnigge.jpg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: auto;
   }
 
   #jc-logo{
@@ -65,14 +65,6 @@
     100%{opacity: 1;}
   }
 
-  @keyframes logoOutro{
-    from {left: 100px;transform: rotateZ(0deg);}
-    to {left: -500px;transform: rotateZ(360deg);}
-    0%{opacity: 1;}
-    25%{opacity: 1;}
-    100%{opacity: 0;}
-  }
-
   
   #logo{
     position: relative;
@@ -80,17 +72,8 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-  }
-
-  .logoEntry{
     animation-name: logoAnim;
     animation-duration: 2.5s;
-    animation-timing-function: cubic-bezier(0.535, -0.015, 0.015, 1.015);
-  }
-
-  .logoOutro{
-    animation-name: logoOutro;
-    animation-duration: 3s;
     animation-timing-function: cubic-bezier(0.535, -0.015, 0.015, 1.015);
   }
 
@@ -216,6 +199,7 @@
 .code-input {
     background-color: #3a63a0;
     color: #ffffff;
+    margin-top: 10px;
     border: 1px solid rgb(33, 23, 56);
     border-radius: 15px;
     width: 400px;
