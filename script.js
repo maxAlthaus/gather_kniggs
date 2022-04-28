@@ -44,13 +44,13 @@ let arr_puzz_enc = [];
 let arr_master = ['Walter', 'Claudia', 'PiaYvonne', 'Franziska', 'HeikeS', 'Monika', 'AnnaLena', 'LenaKuehnlein', 'Marlene', 'Phillipp', 'Maximilian', 'BalthasarMax', 'Watzlawick', 'SimonSinek'];
 let arr_enc = [];
 let arr_steps = [document.querySelector('#stage1'), document.querySelector('#stage2'), document.querySelector('#stage3'), document.querySelector('#stage4'), document.querySelector('#stage5'), document.querySelector('#stage6'), document.querySelector('#stage7')];
-let arr_imgs = ['./img/kleidung.png', 
-        './img/aufmerksamkeit.png', 
-        './img/begruessung.png', 
-        './img/smalltalk.png', 
-        './img/setzen.png', 
-        './img/unguenstigesit.png', 
-        './img/essen.png'];
+let arr_imgs = [['./img/Kleidung_01.jpeg','./img/Kleidung_02.jpeg', './img/Kleidung_03.jpeg'], 
+        ['./img/Aufmerksamkeit_01.jpeg', './img/Aufmerksamkeit_02.jpeg', './img/Aufmerksamkeit_03.jpeg'], 
+        ['./img/Begruessung_01.jpeg', './img/Begruessung_02.jpeg', './img/Begruessung_03.jpeg'], 
+        ['./img/SmallTalk_01.jpeg', './img/SmallTalk_02.jpeg', './img/SmallTalk_03.jpeg'], 
+        ['./img/Hinsetzen_01.jpeg', './img/Hinsetzen_02.jpeg', './img/Hinsetzen_03.jpeg'],
+        ['./img/Unguenstig_01.jpeg', './img/Unguenstig_02.jpeg', './img/Unguenstig_03.jpeg'],
+        ['./img/Essen_01.jpeg', './img/Essen_02.jpeg', './img/Essen_03.jpeg']];
 
 let arr_icons = ['./img/kleidung_icon.png', 
         './img/aufmerksam_icon.png', 
@@ -526,17 +526,27 @@ let start_quiz = (number_question) => {
 
 // ********************************************************************************   Infobox zeigen mit dem Trainingsinput je nach Stage   ***********************************
 let show_infobox = (ammount) => {
+    let counter = 0;
     let image = document.createElement('img');
     typewr.style.display = "none";
     c_container.style.display = "none";
     infobox.classList.toggle('hide');
-    for(let i = 0; i < ammount; i++){
-        arr_steps[i].classList.toggle('active');
-        image.setAttribute("src", arr_imgs[i]);
-        image.style.borderRadius = '25px';
-        info_img.appendChild(image);
-    };
-    weiter_btn.addEventListener('click', () => start_quiz(ammount));
+    
+    arr_steps[ammount-1].classList.toggle('active');
+    image.setAttribute("src", arr_imgs[ammount-1][0]);
+    image.style.borderRadius = '25px';
+    info_img.appendChild(image);
+
+    weiter_btn.addEventListener('click', () => {
+        if(counter < 2){
+            counter++;
+            image.setAttribute("src", arr_imgs[ammount-1][counter]);
+        } else {
+            start_quiz(ammount);
+            counter = 0;
+        }
+    });
+    
 }
 
 // ********************************************************************************  Logg Out **********************************************************************************
